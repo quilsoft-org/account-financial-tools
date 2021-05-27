@@ -19,11 +19,11 @@
 ##############################################################################
 {
     'name': 'Account UX',
-    'version': "13.0.1.14.0",
+    "version": "14.0.1.0.0",
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
-    'author': 'ADHOC SA',
+    'author': 'ADHOC SA, QUILSOFT',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [
@@ -58,6 +58,6 @@
     # lo hacemos auto install porque este repo no lo podemos agregar en otros
     # por build de travis (ej sipreco) y queremos que para runbot se auto
     # instale
-    'auto_install': True,
+    'auto_install': False,
     'application': False,
 }

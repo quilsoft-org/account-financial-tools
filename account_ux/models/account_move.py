@@ -105,15 +105,15 @@ class AccountMove(models.Model):
             move.invoice_outstanding_credits_debits_widget = json.dumps(False)
             move.invoice_has_outstanding = False
 
-            if move.state != 'posted' or move.invoice_payment_state != 'not_paid' or not move.is_invoice(include_receipts=True):
+            if move.state != 'posted' or move.payment_state != 'not_paid' or not move.is_invoice(include_receipts=True):
                 continue
             pay_term_line_ids = move.line_ids.filtered(lambda line: line.account_id.user_type_id.type in ('receivable', 'payable'))
 
             domain = [('account_id', 'in', pay_term_line_ids.mapped('account_id').ids),
-                      '|', ('move_id.state', '=', 'posted'), '&', ('move_id.state', '=', 'draft'), ('journal_id.post_at', '=', 'bank_rec'),
+                      '|', ('move_id.state', '=', 'posted'), '&', ('move_id.state', '=', 'draft'), 
                       ('partner_id', '=', move.commercial_partner_id.id),
                       ('reconciled', '=', False), '|', ('amount_residual', '!=', 0.0),
-                      ('amount_residual_currency', '!=', 0.0)]
+                      ('amount_residual_currency', '!=', 0.0)] # ('journal_id.post_at', '=', 'bank_rec'),
 
             if move.is_inbound():
                 domain.extend([('credit', '>', 0), ('debit', '=', 0)])
