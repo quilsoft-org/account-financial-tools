@@ -40,7 +40,7 @@ class AccountInvoiceTaxWizard(models.TransientModel):
         'Analytic Account',
     )
     invoice_type = fields.Selection(
-        related='move_id.type',
+        related='move_id.move_type',
         string='Invoice Type',
     )
     invoice_company_id = fields.Many2one(
@@ -80,7 +80,7 @@ class AccountInvoiceTaxWizard(models.TransientModel):
             'manual': True,
             'sequence': 99,
             'account_analytic_id': self.account_analytic_id.id,
-            'account_id': invoice.type in ('out_invoice', 'in_invoice') and (
+            'account_id': invoice.move_type in ('out_invoice', 'in_invoice') and (
                 tax['account_id'] or False) or (
                 tax['refund_account_id'] or False),
         }
