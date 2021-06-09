@@ -160,6 +160,8 @@ class AccountMove(models.Model):
         self.ensure_one()
         foreign_currency = self.currency_id if self.currency_id != self.company_id.currency_id else False
 
+        #To-do debit or credit currency 
+        field_currency = 'debit' if True else 'credit'
         reconciled_vals = []
         pay_term_line_ids = self.line_ids.filtered(lambda line: line.account_id.user_type_id.type in ('receivable', 'payable'))
         partials = pay_term_line_ids.mapped('matched_debit_ids') + pay_term_line_ids.mapped('matched_credit_ids')
@@ -168,8 +170,8 @@ class AccountMove(models.Model):
             # In case we are in an onchange, line_ids is a NewId, not an integer. By using line_ids.ids we get the correct integer value.
             counterpart_line = counterpart_lines.filtered(lambda line: line.id not in self.line_ids.ids)
 
-            if foreign_currency and partial.currency_id == foreign_currency:
-                amount = partial.amount_currency
+            if foreign_currency and partial['%s_currency_id' % field_currency].id == foreign_currency:
+                amount = partial['%s_amount_currency'  % field_currency]
             else:
                 # For a correct visualization of the amounts, we use the currency rate from the invoice.
                 amount = partial.company_currency_id._convert(partial.amount, self.currency_id, self.company_id, self.date)
@@ -201,7 +203,7 @@ class AccountMove(models.Model):
             })
         return reconciled_vals
 
-    @api.constrains('state', 'type', 'journal_id')
+    @api.constrains('state', 'move_type', 'journal_id')
     def check_invoice_and_journal_type(self, default=None):
         """ Only let to create customer invoices/vendor bills in respective sale/purchase journals """
         error = self.filtered(
