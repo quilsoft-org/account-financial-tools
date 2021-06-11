@@ -61,8 +61,11 @@ class AccountPayment(models.Model):
         liquidity_lines = self.env['account.move.line']
         counterpart_lines = self.env['account.move.line']
         writeoff_lines = self.env['account.move.line']
-
+        _logger.info(self.move_id)
+        _logger.info(self.move_id.line_ids)
         for line in self.move_id.line_ids:
+            _logger.info(line)
+            _logger.info(line.account_id)
             if line.account_id in self._seek_for_lines_liquidity_accounts():
                 liquidity_lines += line
             elif self._seek_for_lines_counterpart_accounts(line):
