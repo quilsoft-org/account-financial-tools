@@ -12,7 +12,7 @@ class AccountBankStatementLine(models.Model):
         """ Clean move_name to allow reconciling with new line.
         """
         res = super().button_cancel_reconciliation()
-        self.write({'move_name': False})
+        # self.write({'move_name': False})
         return res
 
     # TODO remove in version 15.0 only needed to clean up some statements with move name is set and it should not in
