@@ -35,6 +35,7 @@
     ],
     'data': [
         'security/account_ux_security.xml',
+        'security/ir.model.access.csv',
         'wizards/account_change_currency_views.xml',
         'wizards/res_config_settings_views.xml',
         'wizards/account_invoice_tax_wizard_view.xml',
