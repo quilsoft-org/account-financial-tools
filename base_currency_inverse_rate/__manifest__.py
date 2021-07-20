@@ -19,10 +19,10 @@
 ##############################################################################
 {
     'name': 'Base Currency Inverse Rate',
-    'version': "13.0.1.0.0",
+    'version': "14.0.1.0.0",
     'category': 'Accounting',
     'sequence': 14,
-    'author': 'ADHOC SA',
+    'author': 'ADHOC SA, QUILSOFT',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'summary': '',
