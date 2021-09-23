@@ -41,6 +41,9 @@ class AccountMoveLine(models.Model):
             'res_id': res_id,
         }
 
+    '''
+    # Comento esto para volver a la version anterior
+    
     def _reconcile_lines(self, debit_moves, credit_moves, field):
         """ Modificamos contexto para que odoo solo concilie el metodo
         auto_reconcile_lines teniendo en cuenta la moneda de cia si la cuenta
@@ -61,3 +64,4 @@ class AccountMoveLine(models.Model):
         if self and self[0].company_id.country_id == self.env.ref('base.ar') and not self[0].account_id.currency_id:
             self = self.with_context(no_exchange_difference=True)
         return super().reconcile()
+    '''
