@@ -19,11 +19,11 @@
 ##############################################################################
 {
     'name': 'Account Statement Move Import',
-    'version': '13.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
-    'author': 'ADHOC SA, Odoo Community Association (OCA)',
+    'author': 'ADHOC SA, Odoo Community Association (OCA), QUILSOFT',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [

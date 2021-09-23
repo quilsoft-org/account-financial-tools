@@ -23,7 +23,7 @@
     'category': 'Accounting',
     'sequence': 14,
     'summary': 'Calculate interests for selected partners',
-    'author': 'ADHOC SA',
+    'author': 'ADHOC SA, QUILSOFT',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'depends': [

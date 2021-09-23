@@ -23,7 +23,7 @@
     'category': 'Accounting',
     'sequence': 14,
     'summary': 'Restrict the use of certain journals to certain users',
-    'author': 'ADHOC SA',
+    'author': 'ADHOC SA, QUILSOFT',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [
