@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Account Statement Move Import',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.1.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
