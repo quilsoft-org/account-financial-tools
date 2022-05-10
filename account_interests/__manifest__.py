@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Interests Management',
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.0",
     'category': 'Accounting',
     'sequence': 14,
     'summary': 'Calculate interests for selected partners',
