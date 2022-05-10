@@ -1,6 +1,6 @@
 {
     "name": "Accounting Financial Amounts",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "ADHOC SA, QUILSOFT",
     "license": "AGPL-3",
     "category": "Accounting",
