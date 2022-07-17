@@ -7,10 +7,10 @@ from odoo import models, fields
 
 class ResCompany(models.Model):
 
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
     interest_ids = fields.One2many(
-        'res.company.interest',
-        'company_id',
-        'Interest',
+        "res.company.interest",
+        "company_id",
+        "Interest",
     )

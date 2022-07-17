@@ -18,22 +18,22 @@
 #
 ##############################################################################
 {
-    'name': 'Interests Management',
+    "name": "Interests Management",
     "version": "14.0.1.0.0",
-    'category': 'Accounting',
-    'sequence': 14,
-    'summary': 'Calculate interests for selected partners',
-    'author': 'ADHOC SA, QUILSOFT',
-    'website': 'www.adhoc.com.ar',
-    'license': 'AGPL-3',
-    'depends': [
-        'account',
+    "category": "Accounting",
+    "sequence": 14,
+    "summary": "Calculate interests for selected partners",
+    "author": "ADHOC SA, QUILSOFT",
+    "website": "www.adhoc.com.ar",
+    "license": "AGPL-3",
+    "depends": [
+        "account",
     ],
-    'data': [
-        'views/res_company_views.xml',
-        'data/ir_cron_data.xml',
-        'security/ir.model.access.csv',
+    "data": [
+        "views/res_company_views.xml",
+        "data/ir_cron_data.xml",
+        "security/ir.model.access.csv",
     ],
-    'installable': False,
-    'application': False,
+    "installable": True,
+    "application": False,
 }
