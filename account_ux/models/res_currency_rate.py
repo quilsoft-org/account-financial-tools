@@ -38,3 +38,13 @@ class ResCurrencyRate(models.Model):
 
         return super(ResCurrencyRate, self).write(vals)
 
+
+    def get_map_lines(self, list_of_maps):
+        res = []
+        for map in list_of_maps:
+            for key in map:
+                if key.endswith("_id") and map[key] and len(map[key]) == 2:
+                    map[key] = map[key][0]
+            del map['id']
+            res.append((0,0,map))
+        return res
