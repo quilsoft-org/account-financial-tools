@@ -23,3 +23,18 @@ class ResCurrencyRate(models.Model):
                     ' company set. The rate you want to create will not'
                     ' have any effect, will not be take into account.'
                 ) % rec.name)
+
+    def write(self, vals):
+
+        res = super(ResCurrencyRate, self).write(vals)
+        if vals.get('inverse_rate') or vals.get('rate'):
+            invoces_in_draf = self.env['account.move'].search([('state','=','draft'),('currency_id','=',self.currency_id.id)])
+            if invoces_in_draf:
+                for invoice in invoces_in_draf:
+                    new_invoice_lines = self.get_map_lines(invoice.invoice_line_ids.read())
+                    invoice.invoice_line_ids = [(5,)]
+                    invoice.write({'invoice_line_ids':new_invoice_lines})
+                    invoice._recompute_dynamic_lines(recompute_all_taxes=True, recompute_tax_base_amount=True)
+
+        return super(ResCurrencyRate, self).write(vals)
+
