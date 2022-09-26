@@ -39,7 +39,7 @@ class AccountChangeCurrency(models.TransientModel):
 
     change_type = fields.Selection(
         [('currency', 'Change Only Currency'),
-         ('value', 'Update both currency and values')],
+         ('value', 'Actualizar moneda y calcular precio')],
         default='currency'
     )
 
