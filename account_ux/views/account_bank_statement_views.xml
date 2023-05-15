@@ -23,7 +23,7 @@
             <!-- TODO remove this un v15 will not be needed -->
             <button name="button_undo_reconciliation" position="before">
                 <field name="is_reconciled" attrs="{'invisible':True}"/>                
-                <button name="button_fix_clean_move_name" string="FIX: Clean move name to be able to reconcile" icon="fa-plus" type="object" groups="base.group_no_one" attrs="{'invisible': ['|', ('is_reconciled', '=', False)]}"/>
+                <button name="button_fix_clean_move_name" string="FIX: Clean move name to be able to reconcile" icon="fa-plus" type="object" groups="base.group_no_one" attrs="{'invisible': [('is_reconciled', '=', False)]}"/>
             </button>
         </field>
     </record>
