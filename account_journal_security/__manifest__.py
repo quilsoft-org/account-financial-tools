@@ -19,11 +19,11 @@
 ##############################################################################
 {
     'name': 'Journal Security',
-    "version": "14.0.1.0.0",
+    'version': "13.0.1.0.0",
     'category': 'Accounting',
     'sequence': 14,
     'summary': 'Restrict the use of certain journals to certain users',
-    'author': 'ADHOC SA, QUILSOFT',
+    'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [
@@ -39,7 +39,7 @@
     ],
     'test': [
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': False,
 }

@@ -3,8 +3,6 @@
 # directory
 ##############################################################################
 from odoo import fields, models, api
-import logging
-_logger = logging.getLogger(__name__)
 
 
 class ResConfigSettings(models.TransientModel):
@@ -38,12 +36,11 @@ class ResConfigSettings(models.TransientModel):
         supplier_taxes_ids = ir_default.get(
             'product.template', 'supplier_taxes_id',
             company_id=company_id)
-        if taxes_ids and supplier_taxes_ids:
-            res.update({
-                'sale_tax_ids': [(6, 0, taxes_ids)],
-                'purchase_tax_ids': [(6, 0, supplier_taxes_ids)],
-            })
 
+        res.update({
+            'sale_tax_ids': [(6, 0, taxes_ids)],
+            'purchase_tax_ids': [(6, 0, supplier_taxes_ids)],
+        })
         return res
 
     def set_values(self):

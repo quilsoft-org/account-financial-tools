@@ -5,9 +5,9 @@
         <field name="model">account.invoice.tax.wizard</field>
         <field name="arch" type="xml">
             <form string="Add Tax">
-                <field name="move_id" attrs="{'invisible':True}"/>
-                <field name="invoice_type" attrs="{'invisible':True}"/>
-                <field name="invoice_company_id" attrs="{'invisible':True}"/>
+                <field name="move_id" invisible="1"/>
+                <field name="invoice_type" invisible="1"/>
+                <field name="invoice_company_id" invisible="1"/>
                 <group>
                     <field name="tax_id" context="{'type':invoice_type}" domain="[('company_id', '=', invoice_company_id)]" options="{'no_create': True, 'no_open': True}"/>
                     <field name="name"/>

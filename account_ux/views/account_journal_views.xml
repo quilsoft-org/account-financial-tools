@@ -15,7 +15,7 @@
         </field>
     </record>
 
-    <!--record id="view_account_bank_journal_form" model="ir.ui.view">
+    <record id="view_account_bank_journal_form" model="ir.ui.view">
         <field name="name">account.bank.journal.form</field>
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="account.view_account_bank_journal_form"/>
@@ -24,8 +24,6 @@
                 <field name="name"/>
             </field>
         </field>
-    </record
-    to-do: verificar si esto vale la pena con las nuevas vistas
-    -->
+    </record>
 
 </odoo>

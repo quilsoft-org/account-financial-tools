@@ -19,11 +19,11 @@
 ##############################################################################
 {
     'name': 'Bank Statement Report',
-    'version': "14.0.1.0.0",
+    'version': "13.0.1.0.0",
     'category': 'Aeroo Reporting',
     'sequence': 14,
     'summary': '',
-    'author': 'ADHOC SA, QUILSOFT',
+    'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [
@@ -40,7 +40,7 @@
     ],
     'test': [
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': False,
 }

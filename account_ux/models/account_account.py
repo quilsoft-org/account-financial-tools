@@ -68,6 +68,5 @@ class AccountAccount(models.Model):
             accounts_to_re_compute = self.filtered(lambda x: not x.reconcile and x.user_type_id.type != 'liquidity')
             aml_to_recompute = aml_to_recompute.search([('account_id', 'in', accounts_to_re_compute.ids)])
         res = super(AccountAccount, self).write(vals=vals)
-        # TODO : ver esto como resuelvo 
-        # aml_to_recompute._amount_residual()
+        aml_to_recompute._amount_residual()
         return res

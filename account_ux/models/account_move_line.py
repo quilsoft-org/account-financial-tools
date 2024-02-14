@@ -2,18 +2,13 @@
 # © 2016 ADHOC SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
+from odoo import models, api, _
 from odoo.tools import float_is_zero, float_compare
 from datetime import date
 
 
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
-
-    # TODO remove or don't store on v15, use new functionality to be able to group without storing
-    user_id = fields.Many2one(
-        string='Contact Salesperson', related='partner_id.user_id', store=True,
-        help='Salesperson of contact related to this journal item')
 
     def get_model_id_and_name(self):
         # Function used to display the right action on journal
@@ -41,9 +36,6 @@ class AccountMoveLine(models.Model):
             'res_id': res_id,
         }
 
-    '''
-    # Comento esto para volver a la version anterior
-    
     def _reconcile_lines(self, debit_moves, credit_moves, field):
         """ Modificamos contexto para que odoo solo concilie el metodo
         auto_reconcile_lines teniendo en cuenta la moneda de cia si la cuenta
@@ -57,11 +49,10 @@ class AccountMoveLine(models.Model):
             field = 'amount_residual'
         return super()._reconcile_lines(debit_moves, credit_moves, field)
 
-    def reconcile(self):
+    def reconcile(self, writeoff_acc_id=False, writeoff_journal_id=False):
         """ This is needed if you reconcile, for eg, 1 USD to 1 USD but in an ARS account, by default
         odoo make a full reconcile and exchange
         """
         if self and self[0].company_id.country_id == self.env.ref('base.ar') and not self[0].account_id.currency_id:
             self = self.with_context(no_exchange_difference=True)
-        return super().reconcile()
-    '''
+        return super().reconcile(writeoff_acc_id=writeoff_acc_id, writeoff_journal_id=writeoff_journal_id)

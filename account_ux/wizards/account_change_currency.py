@@ -29,8 +29,8 @@ class AccountChangeCurrency(models.TransientModel):
     )
     currency_rate = fields.Float(
         'Currency Rate',
-        help="Select a rate to apply on the invoice",
-        digits=(16, 6)
+        required=True,
+        help="Select a rate to apply on the invoice"
     )
     move_id = fields.Many2one(
         'account.move',
@@ -39,7 +39,7 @@ class AccountChangeCurrency(models.TransientModel):
 
     change_type = fields.Selection(
         [('currency', 'Change Only Currency'),
-         ('value', 'Actualizar moneda y calcular precio')],
+         ('value', 'Update both currency and values')],
         default='currency'
     )
 
@@ -50,23 +50,12 @@ class AccountChangeCurrency(models.TransientModel):
         else:
             currency = self.currency_from_id.with_context(
                 )
-            amout  = currency._convert(
-                1.0, self.currency_to_id, self.move_id.company_id,
-                date=self.move_id.invoice_date or
-                fields.Date.context_today(self))
-            self.currency_rate = amout
-
-    def change_currency(self):
-        if not self.currency_to_id:
-            self.currency_rate = False
-        else:
-            currency = self.currency_from_id.with_context(
-                )
             self.currency_rate = currency._convert(
                 1.0, self.currency_to_id, self.move_id.company_id,
                 date=self.move_id.invoice_date or
                 fields.Date.context_today(self))
 
+    def change_currency(self):
         self.ensure_one()
         if self.change_type == 'currency':
             self.currency_rate = 1

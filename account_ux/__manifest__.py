@@ -19,11 +19,11 @@
 ##############################################################################
 {
     'name': 'Account UX',
-    "version": "14.0.1.3.1",
+    'version': "13.0.1.7.0",
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
-    'author': 'ADHOC SA, QUILSOFT',
+    'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'images': [
@@ -31,14 +31,14 @@
     'depends': [
         'account',
         "payment",
+        "account_payment_group",
         "base_vat",
     ],
     'data': [
         'security/account_ux_security.xml',
-        'security/ir.model.access.csv',
         'wizards/account_change_currency_views.xml',
         'wizards/res_config_settings_views.xml',
-        'wizards/account_invoice_tax_wizard_view.xml',
+        # 'wizards/account_invoice_tax_wizard_view.xml',
         'views/account_journal_views.xml',
         'views/payment_acquirer_views.xml',
         'views/account_bank_statement_views.xml',
@@ -59,6 +59,6 @@
     # lo hacemos auto install porque este repo no lo podemos agregar en otros
     # por build de travis (ej sipreco) y queremos que para runbot se auto
     # instale
-    'auto_install': False,
+    'auto_install': True,
     'application': False,
 }
